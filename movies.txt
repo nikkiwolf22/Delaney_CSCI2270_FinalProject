@@ -1,0 +1,100 @@
+Shawshank Redemption,1994,Crime,9.3
+The Godfather,1972,Crime,9.2
+The Godfather: Part II,1974,Crime,9.1
+The Dark Knight,2008,Action,9.0
+Pulp Fiction,1994,Crime,8.9
+12 Angry Men,1957,Drama,8.9
+Schindler's List,1993,Drama,8.9
+The Good the Bad and the Ugly,1966,Western,8.9
+The Lord of the Rings: The Return of the King,2003,Fantasy,8.9
+Fight Club,1999,Drama,8.9
+The Lord of the Rings: The Fellowship of the Ring,2001,Fantasy,8.8
+Star Wars: Episode V - The Empire Strikes Back,1980,Fantasy,8.8
+Forrest Gump,1994,Drama,8.8
+Inception,2010,Science Fiction,8.8
+One Flew Over the Cuckoo's Nest,1975,Drama,8.7
+The Lord of the Rings: The Two Towers,2002,Fantasy,8.8
+Goodfellas,1990,Crime,8.7
+The Matrix,1999,Science Fiction,8.7
+Star Wars: Episode IV - A New Hope,1977,Fantasy,8.7
+Seven Samurai,1954,Drama,8.7
+Interstellar,2014,Science Fiction,8.7
+City of God,2002,Crime,8.7
+Se7en,1995,Mystery,8.7
+The Usual Suspects,1995,Crime,8.7
+The Silence of the Lambs,1991,Drama,8.6
+It's a Wonderful Life,1946,Drama,8.7
+Once Upon a Time in the West,1968,Western,8.6
+Leon: The Professional,1994,Crime,8.6
+Life Is Beautiful,1997,Drama,8.6
+Casablanca,1942,Drama,8.6
+Raiders of the Lost Ark,1981,Adventure,8.6
+American History X,1998,Crime,8.6
+Saving Private Ryan,1998,Action,8.6
+City Lights,1931,Comedy,8.6
+Spirited Away,2001,Adventure,8.6
+Psycho,1960,Horror,8.6
+Rear Window,1954,Mystery,8.6
+Whiplash,2014,Drama,8.6
+The Intouchables,2011,Drama,8.6
+Modern Times,1936,Comedy,8.6
+Terminator 2: Judgment Day,1991,Science Fiction,8.5
+Memento,2000,Mystery,8.5
+The Green Mile,1999,Crime,8.5
+The Pianist,2002,Drama,8.5
+The Departed,2006,Crime,8.5
+Apocalypse Now,1979,Drama,8.5
+Sunset Blvd.,1950,Drama,8.5
+Gladiator,2000,Action,8.5
+Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb,1964,Comedy,8.5
+Back to the Future,1985,Science Fiction,8.5
+Alien,1979,Science Fiction,8.5
+The Prestige,2006,Drama,8.5
+The Great Dictator,1940,Comedy,8.4
+The Lion King,1994,Adventure,8.4
+The Loves of Others,2006,Drama,8.4
+Cinema Paradiso,1988,Drama,8.4
+Django Unchained,2012,Western,8.4
+The Shining,1980,Horror,8.4
+The Dark Knight Rises,2012,Action,8.4
+Paths of Glory,1957,Drama,8.4
+American Beauty,1999,Drama,8.4
+WALL-E,2008,Science Fiction,8.4
+North by Northwest,1959,Adventure,8.4
+Aliens,1986,Science Fiction,8.4
+Citizen Kane,1941,Mystery,8.4
+Grave of the Fireflies,1988,Adventure,8.5
+Vertigo,1958,Mystery,8.4
+Amelie,2001,Comedy,8.4
+M,1931,Crime,8.4
+Das Boot,1981,Drama,8.4
+Oldboy,2003,Mystery,8.4
+Princess Mononoke,1997,Fantasy,8.4
+Star Wars: Episode VI - Return of the Jedi,1983,Fantasy,8.4
+Once Upon a Time in America,1984,Crime,8.4
+Toy Story 3,2010,Adventure,8.4
+Reservoir Dogs,1992,Crime,8.3
+A Clockwork Orange,1971,Science Fiction,8.3
+Braveheart,1995,Action,8.3
+Taxi Driver,1976,Drama,8.3
+Double Indemnity,1944,Crime,8.3
+Requiem for a Dream,2000,Drama,8.3
+To Kill a Mockingbird,1962,Drama,8.3
+Witness for the Prosecution,1957,Crime,8.3
+Lawrence of Arabia,1962,Adventure,8.3
+Eternal Sunshine of the Spotless Mind,2004,Romance,8.3
+Full Metal Jacket,1987,Drama,8.3
+The Sting,1973,Crime,8.3
+Singin' in the Rain,1952,Musical,8.3
+Bicycle Thieves,1948,Drama,8.3
+Amadeus,1984,Drama,8.3
+Monty Python and the Holy Grail,1975,Comedy,8.3
+Snatch,2000,Crime,8.3
+2001: A Space Odyssey,1968,Science Fiction,8.3
+The Kid,1921,Comedy,8.3
+For a Few Dollars More,1965,Western,8.3
+Rashomon,1950,Crime,8.3
+L.A. Confidential,1997,Crime,8.3
+All About Eve,1950,Drama,8.3
+The Apartment,1960,Comedy,8.3
+Inglourious Basterds,2009,Adventure,8.3
