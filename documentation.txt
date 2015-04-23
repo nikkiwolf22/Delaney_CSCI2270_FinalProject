@@ -1,5 +1,27 @@
 DOCUMENTATION FOR THIS PROGRAM
 
+within main.cpp:
+
+readFile
+
+	Prototype: void readFile(MovieNode*, string)
+	Description: reads the provided file line-for-line and makes a MovieNode item out of each line's information
+	Expected Inputs: none (takes no parameters)
+	Expected Outputs: function is void (no outputs)
+	Preconditions: No user-activated functions are necessary before this function can run
+	Postconditions: after this function runs, the MovieList array will have a MovieNode at index 0,
+		which will allow for root creation for our binary search tree
+	
+printMenu
+
+	Prototype: void printMenu()
+	Description: print all the movies in the binary search tree for this program
+	Expected Inputs: none (takes no parameters)
+	Expected Outputs: function is void (no outputs)
+	Preconditions: No user-activated functions are necessary before this function can run
+	Postconditions: There are no expected changes to the state of the program after this function has run 
+
+within movieTree.cpp / movieTree.h:
 
 printMovieInventory
 
