@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include "movieTree.h"
+#include <time.h>
 
 using namespace std;
 
@@ -11,20 +12,21 @@ void printMenu();
 
 int main()
 {
+	srand (time(NULL)); //this is a seed for randomization based on uptime for the 
 	MovieNode movieList[100]; //making an array to read in the movies
-	string filename = "movies.txt"; //read in the CLA for filename
-	readFile(movieList, filename); //read the file
+	string filename = "movies.txt";
+	readFile(movieList, filename);
 	MovieTree tree = MovieTree(&movieList[0]); //this constructor only sets the root (see .h file)
 	for (int k=1;k<100;k++)
 	{
-		tree.addMovieNode(&movieList[k]); //adding each movie after the root to the list
+		tree.addMovieNode(&movieList[k]); //adding each movie after the root to the list at index k
 	}
-	string input;
+	string input; //makes a string to accent user input
 	
 	cout << "Thanks for Choosing Jess' Movie Database! \nWe have a repository with the top 100 movies right now,\norganized by year, most applicable genre, and rating!\nHow how you like to begin?" << endl;
-	printMenu();
+	printMenu(); //se below
 	cin >> input;
-	bool running = true;
+	bool running = true; //allows command 10 to exit
 	while (running)
 	{
 		if (input == "1")
@@ -70,17 +72,86 @@ int main()
 		}
 		else if (input == "4")
 		{
-			
+			cout << "Due to the quality of the movies our database houses, we do not \nhave records below an 8.3 star IMDB rating (out of 10)." << endl;
+			cout << "Enter a minimum rating to search for:" << endl;
+			string holder, _rating;
+			getline(cin, holder);
+			getline(cin, _rating);
+			double rating = stod(_rating);
+			cout << "================================================================================" << endl;
+			cout << "We were able to find these titles above a(n) " << rating << " IMDB rating:" << endl;
+			tree.printMoviesAboveRating(&movieList[0], rating);
 			printMenu();
 			cin >> input;
 		}
 		else if (input == "5")
 		{
-			
+			cout << "Due to the quality of the movies our database houses, we do not \nhave records below an 8.3 star IMDB rating (out of 10)." << endl;
+			cout << "Enter a maximum rating to search for:" << endl;
+			string holder, _rating;
+			getline(cin, holder);
+			getline(cin, _rating);
+			double rating = stod(_rating);
+			cout << "================================================================================" << endl;
+			cout << "We were able to find these titles below a(n) " << rating << " IMDB rating:" << endl;
+			tree.printMoviesBelowRating(&movieList[0], rating);
 			printMenu();
 			cin >> input;
 		}
 		else if (input == "6")
+		{
+			cout << "What is the most recent year you'd like to see?" << endl;
+			string holder, _year;
+			getline(cin, holder);
+			getline(cin, _year);
+			int year = stoi(_year);
+			cout << "================================================================================" << endl;
+			cout << "We were able to find these titles made on or before "<< year << ":" << endl;
+			tree.printOlderMovies(&movieList[0], year);
+			printMenu();
+			cin >> input;
+		}
+		else if (input == "7")
+		{
+			cout << "What is the least recent year you'd like to see?" << endl;
+			string holder, _year;
+			getline(cin, holder);
+			getline(cin, _year);
+			int year = stoi(_year);
+			cout << "================================================================================" << endl;
+			cout << "We were able to find these titles made on or after "<< year << ":" << endl;
+			tree.printNewerMovies(&movieList[0], year);
+			printMenu();
+			cin >> input;
+		}
+		else if (input == "8")
+		{
+			cout << "Our database houses the following genres:" << endl;
+			cout << "Action, Adventure, Crime, Comedy, Drama, Fantasy, Mystery, \nRomance, Science Fiction, and Western." << endl;
+			cout << "Which genre would you like us to recommend?" << endl;
+			string holder, genre, _rating;
+			getline(cin, holder);
+			getline(cin, genre);
+			cout << "Great! Next, let's talk about ratings.\nDue to the quality of the movies our database houses, we do not \nhave records below an 8.3 star IMDB rating (out of 10)." << endl;
+			cout << "Enter a minimum rating for us to recommend:" << endl;
+			getline(cin, _rating);
+			double rating = stod(_rating);
+			cout << "================================================================================" << endl;
+			cout << "Here our our viewing recommendations for you:" << endl;
+			cout << genre << " " << rating << endl;
+			tree.recommendMovies(&movieList[0], genre, rating);
+			printMenu();
+			cin >> input;
+		}
+		else if (input == "9")
+		{
+			cout << "================================================================================" << endl;
+			int index = rand() % 100; //generates a random number betweek 0 and 99 based on the seed above
+			tree.randomMovieInfo(&movieList[index]);
+			printMenu();
+			cin >> input;
+		}
+		else if (input == "10")
 		{
 			cout << "Goodbye!" << endl;
 			running = false;
@@ -98,7 +169,7 @@ void readFile(MovieNode* movieList, string filename)
 	if (infile.is_open())
 	{
 		int i=0;
-		//temp variables for the data at hand
+		//temp variables for the data at hand:
 		string _title;
 		int _year;
 		string _genre;
@@ -134,7 +205,11 @@ void printMenu()
 	cout << "2. Find information on a title" << endl;
 	cout << "3. Find movies within a genre" << endl;
 	cout << "4. Find movies above a certain rating" << endl;
-	cout << "5. Recommended movies based on genre and rating" << endl;
-	cout << "6. Quit" << endl;
+	cout << "5. Find movies below a certain rating" << endl;
+	cout << "6. Find movies older than a certain date" << endl;
+	cout << "7. Find movies newer than a certain date" << endl;
+	cout << "8. Recommended movies based on genre and rating" << endl;
+	cout << "9. I'm feeling lucky (random)" << endl;
+	cout << "10. Quit" << endl;
 }
 

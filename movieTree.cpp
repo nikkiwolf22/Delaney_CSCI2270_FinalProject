@@ -120,3 +120,97 @@ void MovieTree::printMoviesInGenre(MovieNode* current, string genre)
 		printMoviesInGenre(current->rightChild, genre);
     }
 }
+
+void MovieTree::printMoviesAboveRating(MovieNode* current, double rating)
+{
+	if(current->leftChild != NULL)
+	{
+		printMoviesAboveRating(current->leftChild, rating);
+    }
+    if(current->rating >= rating)
+    {
+		cout << current->title << " (" << current->year << ")" << endl;
+	}
+    if(current->rightChild != NULL)
+    {
+		printMoviesAboveRating(current->rightChild, rating);
+    }
+}
+
+void MovieTree::printMoviesBelowRating(MovieNode* current, double rating)
+{
+	if(current->leftChild != NULL)
+	{
+		printMoviesBelowRating(current->leftChild, rating);
+    }
+    if(current->rating <= rating)
+    {
+		cout << current->title << " (" << current->year << ")" << endl;
+	}
+    if(current->rightChild != NULL)
+    {
+		printMoviesBelowRating(current->rightChild, rating);
+    }
+}
+
+void MovieTree::printOlderMovies(MovieNode* current, int year)
+{
+	if(current->leftChild != NULL)
+	{
+		printOlderMovies(current->leftChild, year);
+    }
+    if(current->year <= year)
+    {
+		cout << current->title << " (" << current->year << ")" << endl;
+	}
+    if(current->rightChild != NULL)
+    {
+		printOlderMovies(current->rightChild, year);
+    }
+}
+
+void MovieTree::printNewerMovies(MovieNode* current, int year)
+{
+	if(current->leftChild != NULL)
+	{
+		printNewerMovies(current->leftChild, year);
+    }
+    if(current->year >= year)
+    {
+		cout << current->title << " (" << current->year << ")" << endl;
+	}
+    if(current->rightChild != NULL)
+    {
+		printNewerMovies(current->rightChild, year);
+    }
+}
+
+void MovieTree::recommendMovies(MovieNode* current, std::string genre, double rating)
+{
+	if(current->leftChild != NULL)
+	{
+		recommendMovies(current->leftChild, genre, rating);
+    }
+    if(current->rating >= rating && current->genre == genre)
+    {
+		cout << current->title << " (" << current->year << ")" << endl;
+	}
+    if(current->rightChild != NULL)
+    {
+		recommendMovies(current->rightChild, genre, rating);
+    }
+}
+
+void MovieTree::randomMovieInfo(MovieNode* current)
+{
+	cout << "If you're looking for a random movie to watch, \nwe recommend " << current->title << "." << endl;
+	cout << "It's a " << current->rating << "-star rated movie on IMDB made in " << current->year << ",\nand it's one of the best films in the " << current->genre << " genre." << endl;
+	cout << "Would you like us to find movies similar to this? Yes (Y) / No (N)" << endl;
+	string input;
+	cin >> input;
+	if(input == "Y" || "y")
+	{
+		cout << "Wonderful! Here are movies within the same genre:" << endl;
+		printMoviesInGenre(root, current->genre);
+	}
+}
