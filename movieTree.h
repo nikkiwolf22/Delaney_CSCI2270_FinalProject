@@ -1,7 +1,7 @@
 #ifndef MOVIETREE_H
 #define MOVIETREE_H
 
-struct MovieNode{
+struct MovieNode{ //this is the structure for all the movies
     std::string title;
     int year;
     std::string genre;
@@ -11,7 +11,7 @@ struct MovieNode{
     MovieNode *rightChild = NULL;
 };
 
-class MovieTree
+class MovieTree //this is the class with all its glorious functions
 {
     public:
         MovieTree(MovieNode* _root);
@@ -26,8 +26,7 @@ class MovieTree
         void printNewerMovies(MovieNode* current, int year);
         void recommendMovies(MovieNode* current, std::string genre, double rating);
         void randomMovieInfo(MovieNode* current);
-        
-
+		
     protected:
     private:
         MovieNode* root;

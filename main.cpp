@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include "movieTree.h"
-#include <time.h>
+#include <time.h> //used for the srand call, see below
 
 using namespace std;
 
@@ -27,11 +27,11 @@ int main()
 	printMenu(); //se below
 	cin >> input;
 	bool running = true; //allows command 10 to exit
-	while (running)
+	while (running) //the following are all pretty self-explanatory except when otherwise commented. It's just a lot of couts and cins
 	{
 		if (input == "1")
 		{
-			cout << "================================================================================" << endl;
+			cout << "================================================================================" << endl; //spacer for visual convenience
 			cout << "Here is a list of our movies:" << endl;
 			tree.printMovieInventory(&movieList[0]);
 			printMenu();
@@ -156,16 +156,27 @@ int main()
 			cout << "Goodbye!" << endl;
 			running = false;
 		}
-		else
+		else //if the input the user puts in wasn't any of the above
 		{
 			cin >> input;
 		}
 	}
 }
 
+/*readFile
+
+	Prototype: void readFile(MovieNode*, string)
+	Description: reads the provided file line-for-line and makes a MovieNode item out of each line's information
+	Expected Inputs: none (takes no parameters)
+	Expected Outputs: function is void (no outputs)
+	Preconditions: No user-activated functions are necessary before this function can run
+	Postconditions: after this function runs, the MovieList array will have a MovieNode at index 0,
+		which will allow for root creation for our binary search tree
+*/
+
 void readFile(MovieNode* movieList, string filename)
 {
-	ifstream infile(filename);
+	ifstream infile(filename); //opening a file with that file name
 	if (infile.is_open())
 	{
 		int i=0;
@@ -197,6 +208,16 @@ void readFile(MovieNode* movieList, string filename)
 		infile.close();
 	}
 }
+
+/*printMenu
+
+	Prototype: void printMenu()
+	Description: print all the movies in the binary search tree for this program
+	Expected Inputs: none (takes no parameters)
+	Expected Outputs: function is void (no outputs)
+	Preconditions: No user-activated functions are necessary before this function can run
+	Postconditions: There are no expected changes to the state of the program after this function has run
+*/
 
 void printMenu()
 {
