@@ -1,5 +1,4 @@
 # Delaney_CSCI2270_FinalProject
-CSCI 2270 Final Project - Jessica Delaney
 
 #Project Summary: 
 This project is designed to hold a database of movies in terms of title, 
