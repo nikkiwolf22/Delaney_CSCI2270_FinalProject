@@ -14,7 +14,32 @@ int main()
 {
 	srand (time(NULL)); //this is a seed for randomization based on uptime for the 
 	MovieNode movieList[100]; //making an array to read in the movies
-	string filename = "movies.txt";
+	string filename = "";
+
+	/* 
+	This loop will ask the user for the filename, and if the filename is incorrect,
+	will allow the user to try again. Once a valid filename is entered, the loop will terminate.
+	*/
+	bool fileLoop = true;
+	while(fileLoop){
+		cout<<"Enter the name of the data file (ex: Movies.txt):"<<endl;
+		cin>>ws;
+		getline(cin, filename);
+		//test to make sure the file actually exists
+		ifstream testFile;
+		testFile.open(filename.c_str());
+		if(testFile.is_open() == false){
+			cout<<"Woops! Could not open file named: " << filename<<endl;
+			cout<<"Check spelling/capitalization and retry."<<endl;
+		}
+		else{
+			testFile.close();
+			cout<<"Loading movie data from file named: "<< filename<<endl;
+			fileLoop = false;
+			break;
+		}
+	}
+	
 	readFile(movieList, filename);
 	MovieTree tree = MovieTree(&movieList[0]); //this constructor only sets the root (see .h file)
 	for (int k=1;k<100;k++)
