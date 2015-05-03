@@ -14,9 +14,97 @@ MovieTree::MovieTree(MovieNode* _root)
 //did not consider this function complicated or significant enough to put a lengthy description here or in the ducomentation file
 MovieTree::~MovieTree()
 {
-	
+
 }
 
+MovieNode* MovieTree::findMin(MovieNode *node){
+    MovieNode *temp; temp = node;
+    if(temp->leftChild != NULL){
+        temp = temp->leftChild;
+    }
+    return temp;
+}
+/*
+Prototype: void deleteMovieNode(std::string);
+Description: deletes movies node within tree.
+Expected Input: a string of the title you wish to remove.
+Expected Output: void
+Pre-conditions: MovieTree Objects with movie titles inside.
+Post-condition: A MovieTree object with the desired movie title removed.
+*/
+
+//Fix not being able to fee memory, get error
+//seg faults if searchMovieTree
+void MovieTree::deleteMovieNode(std::string title){
+    MovieNode *temp; temp = this->searchMovieTree(title);
+    if(temp != NULL){
+        cout<<"found: "<<temp->title<<endl;
+        if((temp->leftChild == NULL) && (temp->rightChild == NULL)){
+            if(temp->parent->rightChild == temp){
+                temp->parent->rightChild = NULL;
+                //delete temp;
+            }else{
+                temp->parent->leftChild = NULL;
+                //delete temp;
+            }
+        }else if(temp->rightChild == NULL){
+            if(temp->parent->rightChild == temp){
+                temp->parent->rightChild = temp->leftChild;
+                temp->leftChild->parent = temp->parent;
+                //delete temp;
+            }else{
+                temp->parent->leftChild = temp->leftChild;
+                temp->leftChild->parent = temp->parent;
+                //delete temp;
+            }
+        }else if(temp->leftChild == NULL){
+            if(temp->parent->rightChild == temp){
+                temp->parent->rightChild = temp->leftChild;
+                temp->rightChild->parent = temp->parent;
+                //delete temp;
+            }else{
+                temp->parent->leftChild = temp->leftChild;
+                temp->rightChild->parent = temp->parent;
+                //delete temp;
+            }
+        }else{
+            MovieNode *temp2; temp2 = findMin(temp->rightChild);
+            temp->title = temp2->title;
+            temp->genre = temp2->genre;
+            temp->rating = temp2->rating;
+            temp->year = temp2->year;
+            if((temp2->rightChild == NULL) && (temp2->leftChild == NULL)){
+                if(temp2->parent->rightChild == temp2){
+                    temp2->parent->rightChild = NULL;
+                    //delete temp2;
+                }else{
+                    temp2->parent->leftChild = NULL;
+                    //delete temp2;
+                }
+            }else if(temp2->rightChild == NULL){
+                if(temp2->parent->rightChild == temp2){
+                    temp2->parent->rightChild = temp2->leftChild;
+                    temp2->leftChild->parent = temp2->parent;
+                    //delete temp2;
+                }else{
+                    temp2->parent->leftChild = temp2->leftChild;
+                    temp2->leftChild->parent = temp2->parent;
+                    //delete temp2;
+                }
+            }else if(temp2->leftChild == NULL){
+                if(temp2->parent->rightChild == temp2){
+                    temp2->parent->rightChild = temp2->rightChild;
+                    temp2->rightChild->parent = temp2->parent;
+                    delete temp2;
+                }else{
+                    temp2->parent->leftChild = temp2->rightChild;
+                    temp2->rightChild->parent = temp2->parent;
+                    delete temp2;
+                }
+            }
+        }
+    }
+}
 /*printMovieInventory
 
 	Prototype: void printMovieInventory(MovieNode* root)
@@ -25,7 +113,7 @@ MovieTree::~MovieTree()
 	Expected Outputs: function is void (no outputs)
 	Preconditions: No user-activated functions are necessary before this function can run. The only necessary function is
 		the creation of the root for the binary search tree, which happens automatically before any user prompts are called.
-	Postconditions: There are no expected changes to the state of the program after this function has run 
+	Postconditions: There are no expected changes to the state of the program after this function has run
 
 */
 
@@ -100,7 +188,7 @@ void MovieTree::addMovieNode(MovieNode* m) //pretty straightforward, follows lec
 	Expected Outputs: a MovieNode pointer which pointers to the movie with the specified title
 	Preconditions: No user-activated functions are necessary before this function can run. The only necessary function is
 		the creation of the root for the binary search tree, which happens automatically before any user prompts are called.
-	Postconditions: There are no expected changes to the state of the program after this function has run 
+	Postconditions: There are no expected changes to the state of the program after this function has run
 
 */
 
@@ -141,6 +229,7 @@ MovieNode* MovieTree::searchMovieTree(std::string name) //very similar to above 
 			return c;
 		}
 	}
+	return NULL;
 }
 
 /*printMoviesInGenre
@@ -151,7 +240,7 @@ MovieNode* MovieTree::searchMovieTree(std::string name) //very similar to above 
 	Expected Outputs: function is void (no outputs)
 	Preconditions: No user-activated functions are necessary before this function can run. The only necessary function is
 		the creation of the root for the binary search tree, which happens automatically before any user prompts are called.
-	Postconditions: There are no expected changes to the state of the program after this function has run 
+	Postconditions: There are no expected changes to the state of the program after this function has run
 
 */
 
@@ -179,7 +268,7 @@ void MovieTree::printMoviesInGenre(MovieNode* current, string genre)
 	Expected Outputs: function is void (no outputs)
 	Preconditions: No user-activated functions are necessary before this function can run. The only necessary function is
 		the creation of the root for the binary search tree, which happens automatically before any user prompts are called.
-	Postconditions: There are no expected changes to the state of the program after this function has run 
+	Postconditions: There are no expected changes to the state of the program after this function has run
 
 */
 
@@ -207,7 +296,7 @@ void MovieTree::printMoviesAboveRating(MovieNode* current, double rating)
 	Expected Outputs: function is void (no outputs)
 	Preconditions: No user-activated functions are necessary before this function can run. The only necessary function is
 		the creation of the root for the binary search tree, which happens automatically before any user prompts are called.
-	Postconditions: There are no expected changes to the state of the program after this function has run 
+	Postconditions: There are no expected changes to the state of the program after this function has run
 
 */
 
@@ -235,7 +324,7 @@ void MovieTree::printMoviesBelowRating(MovieNode* current, double rating)
 	Expected Outputs: function is void (no outputs)
 	Preconditions: No user-activated functions are necessary before this function can run. The only necessary function is
 		the creation of the root for the binary search tree, which happens automatically before any user prompts are called.
-	Postconditions: There are no expected changes to the state of the program after this function has run 
+	Postconditions: There are no expected changes to the state of the program after this function has run
 
 */
 
@@ -263,7 +352,7 @@ void MovieTree::printOlderMovies(MovieNode* current, int year)
 	Expected Outputs: function is void (no outputs)
 	Preconditions: No user-activated functions are necessary before this function can run. The only necessary function is
 		the creation of the root for the binary search tree, which happens automatically before any user prompts are called.
-	Postconditions: There are no expected changes to the state of the program after this function has run 
+	Postconditions: There are no expected changes to the state of the program after this function has run
 
 */
 
@@ -291,7 +380,7 @@ void MovieTree::printNewerMovies(MovieNode* current, int year)
 	Expected Outputs: function is void (no outputs)
 	Preconditions: No user-activated functions are necessary before this function can run. The only necessary function is
 		the creation of the root for the binary search tree, which happens automatically before any user prompts are called.
-	Postconditions: There are no expected changes to the state of the program after this function has run 
+	Postconditions: There are no expected changes to the state of the program after this function has run
 
 */
 
@@ -321,7 +410,7 @@ void MovieTree::recommendMovies(MovieNode* current, std::string genre, double ra
 	Expected Outputs: function is void (no outputs)
 	Preconditions: No user-activated functions are necessary before this function can run. The only necessary function is
 		the creation of the root for the binary search tree, which happens automatically before any user prompts are called.
-	Postconditions: There are no expected changes to the state of the program after this function has run 
+	Postconditions: There are no expected changes to the state of the program after this function has run
 
 */
 
