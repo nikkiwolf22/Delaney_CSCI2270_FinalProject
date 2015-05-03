@@ -10,7 +10,7 @@ using namespace std;
 void readFile(MovieNode*, string);
 void printMenu();
 
-int main()
+int main(int argv, char **argc)
 {
 	srand (time(NULL)); //this is a seed for randomization based on uptime for the
 	MovieNode *movieList = new MovieNode[100]; //making an array to read in the movies
@@ -151,7 +151,17 @@ int main()
 			printMenu();
 			cin >> input;
 		}
-		else if (input == "10")
+		else if (input == "10"){
+			cout << "================================================================================" << endl;
+			cin.get();
+			cout<<"Enter title of movie you would like to remove:"<<endl;
+			string inMovie; getline(cin, inMovie);
+			tree.deleteMovieNode(inMovie);
+			cout<<"Movie Title: "<<inMovie<<" has been removed"<<endl;
+			printMenu();
+			cin >> input;
+		}
+		else if (input == "11")
 		{
 			cout << "Goodbye!" << endl;
 			running = false;
@@ -231,6 +241,7 @@ void printMenu()
 	cout << "7. Find movies newer than a certain date" << endl;
 	cout << "8. Recommended movies based on genre and rating" << endl;
 	cout << "9. I'm feeling lucky (random)" << endl;
-	cout << "10. Quit" << endl;
+	cout<<"10. Delete Movie"<<endl;
+	cout << "11. Quit" << endl;
 }
 

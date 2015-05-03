@@ -26,10 +26,14 @@ class MovieTree //this is the class with all its glorious functions
         void printNewerMovies(MovieNode* current, int year);
         void recommendMovies(MovieNode* current, std::string genre, double rating);
         void randomMovieInfo(MovieNode* current);
-		
+
+        void deleteMovieNode(std::string);
+
     protected:
     private:
         MovieNode* root;
+        MovieNode* findMin(MovieNode*);
+        MovieNode* searchThis(std::string);
 };
 
 #endif // MOVIETREE_H
