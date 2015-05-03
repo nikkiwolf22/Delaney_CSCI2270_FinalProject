@@ -12,6 +12,7 @@ void printMenu();
 
 int main()
 {
+<<<<<<< HEAD
 	srand (time(NULL)); //this is a seed for randomization based on uptime for the 
 	MovieNode movieList[100]; //making an array to read in the movies
 	string filename = "";
@@ -40,6 +41,11 @@ int main()
 		}
 	}
 	
+=======
+	srand (time(NULL)); //this is a seed for randomization based on uptime for the
+	MovieNode *movieList = new MovieNode[100]; //making an array to read in the movies
+	string filename = "movies.txt";
+>>>>>>> 090017937ae508716d7f7f7e1547aabf3cdd7e3e
 	readFile(movieList, filename);
 	MovieTree tree = MovieTree(&movieList[0]); //this constructor only sets the root (see .h file)
 	for (int k=1;k<100;k++)
@@ -47,7 +53,7 @@ int main()
 		tree.addMovieNode(&movieList[k]); //adding each movie after the root to the list at index k
 	}
 	string input; //makes a string to accent user input
-	
+
 	cout << "Thanks for Choosing Jess' Movie Database! \nWe have a repository with the top 100 movies right now,\norganized by year, most applicable genre, and rating!\nHow how you like to begin?" << endl;
 	printMenu(); //se below
 	cin >> input;
