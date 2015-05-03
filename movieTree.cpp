@@ -333,7 +333,7 @@ void MovieTree::randomMovieInfo(MovieNode* current)
 	cout << "Would you like us to find movies similar to this? Yes (Y) / No (N)" << endl;
 	string input;
 	cin >> input;
-	if(input == "Y" || "y") //if the user hits yes for the rpevious prompt
+	if(input == "Y" || input == "y") //if the user hits yes for the rpevious prompt
 	{
 		cout << "Wonderful! Here are movies within the same genre:" << endl;
 		printMoviesInGenre(root, current->genre); //calls printMoviesInGenre for the randomly selected movie's genre
